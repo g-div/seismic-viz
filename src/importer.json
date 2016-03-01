@@ -1,0 +1,40 @@
+{
+  "server": {
+    "app": {
+      "name": "seismic-viz-importer"
+    },
+    "debug": {
+      "request": ["info", "error"]
+    }
+  },
+  "plugins": [{
+    "good": {
+      "reporters": [{
+        "reporter": "good-console",
+        "events": {"log": "*"}
+      }]
+    }
+  },
+    {
+      "hapi-simple-shutdown": {}
+    }, {
+      "hapi-events": {}
+    }, {
+      "hapi-rethinkdb": {
+        "db": "$env.DB_NAME"
+      }
+    }, {
+      "hapi-rethinkdb-init": {
+        "tables": ["$env.DB_TABLE"]
+      }
+    }, {
+      "@seismic-viz/websocket-importer": {
+        "name": "seismicportal",
+        "url": "$env.SEISMICPORTAL_URL"
+      }
+    }, {
+      "@seismic-viz/source-to-db": {
+        "table": "$env.DB_TABLE"
+      }
+    }]
+}

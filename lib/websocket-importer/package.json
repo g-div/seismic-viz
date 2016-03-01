@@ -1,0 +1,31 @@
+{
+  "name": "@seismic-viz/websocket-importer",
+  "version": "0.0.1",
+  "description": "A seismic-viz adapter to import data from Websockets data-sources",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g-div/seismic-viz.git"
+  },
+  "keywords": [
+    "seismic",
+    "visualization",
+    "viz",
+    "ws",
+    "websocket",
+    "websockets",
+    "adapter"
+  ],
+  "author": "Giuseppe Di Vincenzo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/g-div/seismic-viz/issues"
+  },
+  "homepage": "https://github.com/g-div/seismic-viz#readme",
+  "dependencies": {
+    "sockjs-client": "^1.0.3"
+  }
+}

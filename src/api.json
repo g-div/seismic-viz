@@ -1,0 +1,87 @@
+{
+    "server": {
+        "app": {
+            "name": "seismic-viz-api"
+        },
+        "debug": {
+            "request": ["info", "error"]
+        },
+        "mime": {
+            "override": {
+                "text/event-stream": {
+                    "compressible": false,
+                    "type": "text/event-stream"
+                }
+            }
+        }
+    },
+    "connections": [{
+        "port": "$env.PORT",
+        "host": "$env.HOST",
+        "labels": ["api"],
+        "routes" : {
+            "cors" : true
+        }
+    }],
+    "plugins": [{
+      "good": {
+        "reporters": [{
+          "reporter": "good-console",
+          "events": {"log": "*"}
+        }]
+      }
+    },
+    {
+      "hapi-simple-shutdown": {}
+    }, {
+      "hapi-rethinkdb": {
+        "db": "$env.DB_NAME"
+      }
+    }, {
+      "h2o2": {}
+      },{
+      "susie": {
+        "heartbeat": 20000
+      }
+    }, {
+      "@seismic-viz/routes": {
+        "endpoint": "/earthquakes",
+        "table": "$env.DB_TABLE",
+        "queryLastHours": 6,
+        "timezone": "+01:00",
+        "model": {
+          "type": true,
+          "id": true,
+          "geometry": {
+            "type": true,
+            "coordinates": true
+          },
+          "properties": {
+            "update": true,
+            "location": true,
+            "time": true,
+            "lastupdate": true,
+            "mag": true,
+            "magtype": true,
+            "depth": true,
+            "source": true,
+            "details": true,
+            "url": true
+          }
+        }
+      }
+    }, {
+      "@seismic-viz/fdsn-proxy": {
+        "path": "/search",
+        "url": "seismicportal.eu"
+      }
+    }, {
+      "inert": {}
+      }, {
+        "vision": {}
+        }, {
+      "hapi-swagger": {}
+      }, {
+      "blipp": {}
+    }]
+}

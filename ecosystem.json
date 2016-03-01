@@ -1,0 +1,29 @@
+{
+	"apps": [{
+		"name": "api",
+		"script": "./node_modules/.bin/rejoice",
+		"args": [
+			"-r", "babel/register",
+			"-r", "dotenv/config",
+			"-c", "src/api.json"
+		]
+	}, {
+		"name": "db",
+		"script": "./node_modules/.bin/rejoice",
+		"args": [
+			"-r", "babel/register",
+			"-r", "dotenv/config",
+			"-c", "src/importer.json"
+		]
+	}],
+	"deploy": {
+		"production": {
+			"user": "web",
+			"host": "seismic.localhorst.io",
+			"ref": "origin/master",
+			"repo": "git@github.com:g-div/seismic-viz.git",
+			"path": "~/seismic-viz-backend",
+			"post-deploy": "./scripts/post-deploy.sh"
+		}
+	}
+}

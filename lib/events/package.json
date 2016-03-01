@@ -1,0 +1,23 @@
+{
+  "name": "hapi-events",
+  "version": "0.0.1",
+  "description": "An event aggregator for hapi",
+  "main": "index.js",
+  "dependencies": {
+    "kilt": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g-div/hapi-events.git"
+  },
+  "keywords": [
+    "hapi",
+    "events"
+  ],
+  "author": "g-div",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/g-div/hapi-events/issues"
+  },
+  "homepage": "https://github.com/g-div/hapi-events#readme"
+}

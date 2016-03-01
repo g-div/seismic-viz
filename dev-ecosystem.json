@@ -1,0 +1,25 @@
+{
+	"apps": [{
+		"name": "mock",
+		"script": "./node_modules/.bin/babel-node",
+		"args" : ["scripts/mock.js"]
+	}, {
+		"name": "api",
+		"script": "./node_modules/.bin/rejoice",
+		"args": [
+			"-r", "babel/register",
+			"-r", "dotenv/config",
+			"-c", "src/api.json"
+		],
+		"watch": true
+	}, {
+		"name": "db",
+		"script": "./node_modules/.bin/rejoice",
+		"args": [
+			"-r", "babel/register",
+			"-r", "dotenv/config",
+			"-c", "src/importer.json"
+		],
+		"watch": true
+	}]
+}
