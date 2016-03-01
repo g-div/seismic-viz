@@ -1,4 +1,6 @@
-# Seismic events
+# Seismic viz
+
+This is the API to send Server-Sent Events to the listening clients. The client code can be found at [g-div/seismic-frontend](https://github.com/g-div/seismic-frontend).
 
 ## Install
 ```
